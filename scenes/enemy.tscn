@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://dkqw8j6wfchbp"]
 
 [ext_resource type="Texture2D" uid="uid://bekjhk7dv4kw2" path="res://sprites/enemies/Orc Crew/Orc - Warrior/Idle/Idle-Sheet.png" id="1_kw4uy"]
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_ok2cq"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ok2cq"]
 [ext_resource type="Texture2D" uid="uid://bt1bj181v318q" path="res://sprites/03_Characters/00_ExampleCharacters/char_1.png" id="2_8vyah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dly2"]
