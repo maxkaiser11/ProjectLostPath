@@ -1,38 +1,38 @@
 extends CharacterBody2D
 
-const SPEED = 100
-var current_dir = ""
+const SPEED = 75
+var current_dir: String
 
 
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 
 func player_movement(delta):
+	velocity = Vector2.ZERO
+	
 	if Input.is_action_pressed("down"):
-		velocity.x = 0
 		velocity.y = SPEED
 		current_dir = "down"
 		play_anim(1)
-	elif Input.is_action_pressed("up"):
-		velocity.x = 0
+	if Input.is_action_pressed("up"):
 		velocity.y = -SPEED
 		current_dir = "up"
 		play_anim(1)
-	elif Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED
-		velocity.y = 0
 		current_dir = "left"
 		play_anim(1)
-	elif Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
-		velocity.y = 0
 		current_dir = "right"
 		play_anim(1)
+	
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * SPEED
+		play_anim(1)
 	else:
-		velocity.x = 0
-		velocity.y = 0
 		play_anim(0)
-		
+	
 	move_and_slide()
 
 func play_anim(movement):
