@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://bt8v88y8m5yy6"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Player.cs" id="1_ea0sn"]
+[ext_resource type="Texture2D" uid="uid://cfqqit03x38nf" path="res://Assets/Characters/Wizard-Walk.png" id="2_erdyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2l6u"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1oxp"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrijj"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epfex"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjkja"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7vr2"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghqao"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqlk1"]
+atlas = ExtResource("2_erdyo")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1sw43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2l6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1oxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrijj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epfex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjkja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7vr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghqao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqlk1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_0yxxf"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode")]
+script = ExtResource("1_ea0sn")
+Speed = 200.0
+spriteNode = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1sw43")
+animation = &"walk"
+script = SubResource("GDScript_0yxxf")
