@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfqqit03x38nf"
-path="res://.godot/imported/Wizard-Walk.png-8ed84978180caa974043598be9219136.ctex"
+uid="uid://b0xr503owxb0l"
+path="res://.godot/imported/Slime-Walk.png-078fbfd219398178b9feeb9565696e53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Wizard-Walk.png"
-dest_files=["res://.godot/imported/Wizard-Walk.png-8ed84978180caa974043598be9219136.ctex"]
+source_file="res://Assets/Characters/Slime/Slime with shadows/Slime-Walk.png"
+dest_files=["res://.godot/imported/Slime-Walk.png-078fbfd219398178b9feeb9565696e53.ctex"]
 
 [params]
 
