@@ -1,7 +1,33 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt8v88y8m5yy6"]
+[gd_scene load_steps=29 format=3 uid="uid://bt8v88y8m5yy6"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Player/Player.cs" id="1_ea0sn"]
-[ext_resource type="Texture2D" uid="uid://cfqqit03x38nf" path="res://Assets/Characters/Wizard-Walk.png" id="2_erdyo"]
+[ext_resource type="Texture2D" uid="uid://dds3swa52fhyi" path="res://Assets/Characters/Wizard/Wizard/Wizard-Idle.png" id="2_2ryum"]
+[ext_resource type="Texture2D" uid="uid://cfqqit03x38nf" path="res://Assets/Characters/Player/Wizard-Walk.png" id="2_erdyo"]
+[ext_resource type="Texture2D" uid="uid://cec3c8mdg15rs" path="res://Assets/Characters/Armored Axeman/Armored Axeman/Armored Axeman-Walk.png" id="4_jf6yb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l0bh"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teern"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta1bo"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j27n"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1750"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72n3d"]
+atlas = ExtResource("2_2ryum")
+region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2l6u"]
 atlas = ExtResource("2_erdyo")
@@ -35,8 +61,63 @@ region = Rect2(600, 0, 100, 100)
 atlas = ExtResource("2_erdyo")
 region = Rect2(700, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fosy"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wtkq"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66hnm"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hcoh"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7svn"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf1vn"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xpe"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiwmi"]
+atlas = ExtResource("4_jf6yb")
+region = Rect2(700, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1sw43"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l0bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teern")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta1bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j27n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1750")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72n3d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y2l6u")
@@ -65,6 +146,35 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fosy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wtkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66hnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hcoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7svn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf1vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiwmi")
+}],
+"loop": true,
+"name": &"warriorWalk",
+"speed": 5.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_0yxxf"]
@@ -83,10 +193,9 @@ func _process(delta: float) -> void:
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode")]
 script = ExtResource("1_ea0sn")
-Speed = 200.0
 spriteNode = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1sw43")
-animation = &"walk"
+animation = &"idle"
 script = SubResource("GDScript_0yxxf")

@@ -1,10 +1,11 @@
+
 using Godot;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float Speed = 50;
 
 	[Export] private AnimatedSprite2D spriteNode;
+	[Export] public float MaxSpeed = 200f;
 
 
 	public override void _PhysicsProcess(double delta)
@@ -27,25 +28,29 @@ public partial class Player : CharacterBody2D
 		{
 			direction.Y += 1;
 			spriteNode.Play("walk");
+
 		}
 		if (Input.IsActionPressed("left"))
 		{
 			direction.X -= 1;
 			spriteNode.Play("walk");
+			spriteNode.FlipH = true;
+
 		}
 		if (Input.IsActionPressed("right"))
 		{
 			direction.X += 1;
 			spriteNode.Play("walk");
+			spriteNode.FlipH = false;
+
 		}
 
-		if (direction != Vector2.Zero)
-		{
-			direction = direction.Normalized();
-		}
+		// Normalize direction to prevent faster diagonal movement
+		direction = direction.Normalized();
 
 
-		Velocity = direction * Speed;
+		// Move the player with the new velocity
+		Velocity = direction * MaxSpeed;
 		MoveAndSlide();
 	}
 }

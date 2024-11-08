@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://0k360h7sb2l0"]
+
+[ext_resource type="PackedScene" uid="uid://b3po3r3trfnly" path="res://Scenes/UI/slot.tscn" id="1_ciqxw"]
+[ext_resource type="Script" path="res://Scenes/UI/UI.cs" id="1_mwl64"]
+[ext_resource type="Texture2D" uid="uid://dilw8b5e80s2h" path="res://11_Wooden_Staff.png" id="3_psmq0"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_slot")]
+script = ExtResource("1_mwl64")
+_slot = NodePath("Slot")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Slot" parent="." instance=ExtResource("1_ciqxw")]
+offset_left = 242.0
+offset_top = 337.0
+offset_right = 262.0
+offset_bottom = 357.0
+
+[node name="Slot2" parent="." instance=ExtResource("1_ciqxw")]
+offset_left = 264.0
+offset_top = 338.0
+offset_right = 284.0
+offset_bottom = 358.0
+texture_normal = ExtResource("3_psmq0")
+texture_pressed = ExtResource("3_psmq0")
+
+[node name="Label" parent="Slot2" index="0"]
+text = "2
+"
+
+[editable path="Slot2"]
