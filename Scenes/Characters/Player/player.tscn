@@ -1,9 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://bt8v88y8m5yy6"]
+[gd_scene load_steps=32 format=3 uid="uid://bt8v88y8m5yy6"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/Player/Player.cs" id="1_ea0sn"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_ea0sn"]
 [ext_resource type="Texture2D" uid="uid://dds3swa52fhyi" path="res://Assets/Characters/Wizard/Wizard/Wizard-Idle.png" id="2_2ryum"]
 [ext_resource type="Texture2D" uid="uid://cfqqit03x38nf" path="res://Assets/Characters/Player/Wizard-Walk.png" id="2_erdyo"]
 [ext_resource type="Texture2D" uid="uid://cec3c8mdg15rs" path="res://Assets/Characters/Armored Axeman/Armored Axeman/Armored Axeman-Walk.png" id="4_jf6yb"]
+[ext_resource type="PackedScene" uid="uid://ccho6h4c82p0q" path="res://Scenes/Characters/state_machine.tscn" id="5_8bt4m"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="6_o376c"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="7_ipyhr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5l0bh"]
 atlas = ExtResource("2_2ryum")
@@ -115,7 +118,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_72n3d")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -144,7 +147,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_iqlk1")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"Move",
 "speed": 5.0
 }, {
 "frames": [{
@@ -191,11 +194,25 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteNode", "SpriteNode", "StateMachineNode")]
 script = ExtResource("1_ea0sn")
 spriteNode = NodePath("AnimatedSprite2D")
+SpriteNode = NodePath("AnimatedSprite2D")
+StateMachineNode = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1sw43")
-animation = &"idle"
+animation = &"Move"
 script = SubResource("GDScript_0yxxf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("5_8bt4m")]
+currentState = NodePath("IdleState")
+states = [NodePath("IdleState"), NodePath("MoveState")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("6_o376c")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("7_ipyhr")

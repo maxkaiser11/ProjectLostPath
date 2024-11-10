@@ -12,9 +12,14 @@ tile_set = ExtResource("2_5m3jx")
 
 [node name="Player" parent="." instance=ExtResource("1_stbli")]
 position = Vector2(260, 149)
+MaxSpeed = 200.0
+
+[node name="StateMachine" parent="Player" index="2" node_paths=PackedStringArray("states")]
+states = []
 
 [node name="UI" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("3_xuu0k")]
 _player = NodePath("../Player/AnimatedSprite2D")
 
 [editable path="Player"]
 [editable path="UI"]
+[editable path="UI/Slot2"]
